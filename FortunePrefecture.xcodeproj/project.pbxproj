@@ -1,0 +1,410 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D11C63532B9064E7008B7324 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11C63522B9064E7008B7324 /* HistoryView.swift */; };
+		D11C63562B90EC4F008B7324 /* FortuneResultEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11C63542B90EC4F008B7324 /* FortuneResultEntity+CoreDataClass.swift */; };
+		D11C63572B90EC4F008B7324 /* FortuneResultEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11C63552B90EC4F008B7324 /* FortuneResultEntity+CoreDataProperties.swift */; };
+		D11C635A2B90FA24008B7324 /* FortuneResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11C63592B90FA24008B7324 /* FortuneResultViewModel.swift */; };
+		D1DB3BE22B9004D500AFF578 /* FortunePrefectureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BE12B9004D500AFF578 /* FortunePrefectureApp.swift */; };
+		D1DB3BE42B9004D500AFF578 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BE32B9004D500AFF578 /* ContentView.swift */; };
+		D1DB3BE62B9004DC00AFF578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1DB3BE52B9004DC00AFF578 /* Assets.xcassets */; };
+		D1DB3BE92B9004DC00AFF578 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1DB3BE82B9004DC00AFF578 /* Preview Assets.xcassets */; };
+		D1DB3BF02B900BFC00AFF578 /* FetchFortune.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BEF2B900BFC00AFF578 /* FetchFortune.swift */; };
+		D1DB3BF22B901BF800AFF578 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BF12B901BF800AFF578 /* Models.swift */; };
+		D1DB3BF52B90381800AFF578 /* FortunePrefecture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BF32B90381600AFF578 /* FortunePrefecture.xcdatamodeld */; };
+		D1DB3BFC2B90474600AFF578 /* FortuneResponseEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BFA2B90474600AFF578 /* FortuneResponseEntity+CoreDataClass.swift */; };
+		D1DB3BFD2B90474600AFF578 /* FortuneResponseEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BFB2B90474600AFF578 /* FortuneResponseEntity+CoreDataProperties.swift */; };
+		D1DB3BFF2B904A8300AFF578 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BFE2B904A8300AFF578 /* Persistence.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D11C63522B9064E7008B7324 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		D11C63542B90EC4F008B7324 /* FortuneResultEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FortuneResultEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D11C63552B90EC4F008B7324 /* FortuneResultEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FortuneResultEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D11C63592B90FA24008B7324 /* FortuneResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneResultViewModel.swift; sourceTree = "<group>"; };
+		D1DB3BDE2B9004D500AFF578 /* FortunePrefecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FortunePrefecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1DB3BE12B9004D500AFF578 /* FortunePrefectureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortunePrefectureApp.swift; sourceTree = "<group>"; };
+		D1DB3BE32B9004D500AFF578 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D1DB3BE52B9004DC00AFF578 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D1DB3BE82B9004DC00AFF578 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D1DB3BEF2B900BFC00AFF578 /* FetchFortune.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFortune.swift; sourceTree = "<group>"; };
+		D1DB3BF12B901BF800AFF578 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		D1DB3BF42B90381700AFF578 /* FortunePrefecture.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FortunePrefecture.xcdatamodel; sourceTree = "<group>"; };
+		D1DB3BFA2B90474600AFF578 /* FortuneResponseEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FortuneResponseEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D1DB3BFB2B90474600AFF578 /* FortuneResponseEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FortuneResponseEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D1DB3BFE2B904A8300AFF578 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D1DB3BDB2B9004D500AFF578 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D11C63582B90F9EF008B7324 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D11C63592B90FA24008B7324 /* FortuneResultViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D1DB3BD52B9004D500AFF578 = {
+			isa = PBXGroup;
+			children = (
+				D1DB3BE02B9004D500AFF578 /* FortunePrefecture */,
+				D1DB3BDF2B9004D500AFF578 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D1DB3BDF2B9004D500AFF578 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D1DB3BDE2B9004D500AFF578 /* FortunePrefecture.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D1DB3BE02B9004D500AFF578 /* FortunePrefecture */ = {
+			isa = PBXGroup;
+			children = (
+				D11C63582B90F9EF008B7324 /* ViewModel */,
+				D1DB3BE12B9004D500AFF578 /* FortunePrefectureApp.swift */,
+				D11C63552B90EC4F008B7324 /* FortuneResultEntity+CoreDataProperties.swift */,
+				D11C63542B90EC4F008B7324 /* FortuneResultEntity+CoreDataClass.swift */,
+				D1DB3BFB2B90474600AFF578 /* FortuneResponseEntity+CoreDataProperties.swift */,
+				D11C63522B9064E7008B7324 /* HistoryView.swift */,
+				D1DB3BFE2B904A8300AFF578 /* Persistence.swift */,
+				D1DB3BFA2B90474600AFF578 /* FortuneResponseEntity+CoreDataClass.swift */,
+				D1DB3BE32B9004D500AFF578 /* ContentView.swift */,
+				D1DB3BF32B90381600AFF578 /* FortunePrefecture.xcdatamodeld */,
+				D1DB3BF12B901BF800AFF578 /* Models.swift */,
+				D1DB3BEF2B900BFC00AFF578 /* FetchFortune.swift */,
+				D1DB3BE52B9004DC00AFF578 /* Assets.xcassets */,
+				D1DB3BE72B9004DC00AFF578 /* Preview Content */,
+			);
+			path = FortunePrefecture;
+			sourceTree = "<group>";
+		};
+		D1DB3BE72B9004DC00AFF578 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D1DB3BE82B9004DC00AFF578 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D1DB3BDD2B9004D500AFF578 /* FortunePrefecture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1DB3BEC2B9004DC00AFF578 /* Build configuration list for PBXNativeTarget "FortunePrefecture" */;
+			buildPhases = (
+				D1DB3BDA2B9004D500AFF578 /* Sources */,
+				D1DB3BDB2B9004D500AFF578 /* Frameworks */,
+				D1DB3BDC2B9004D500AFF578 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FortunePrefecture;
+			productName = FortunePrefecture;
+			productReference = D1DB3BDE2B9004D500AFF578 /* FortunePrefecture.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D1DB3BD62B9004D500AFF578 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					D1DB3BDD2B9004D500AFF578 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = D1DB3BD92B9004D500AFF578 /* Build configuration list for PBXProject "FortunePrefecture" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D1DB3BD52B9004D500AFF578;
+			productRefGroup = D1DB3BDF2B9004D500AFF578 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D1DB3BDD2B9004D500AFF578 /* FortunePrefecture */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D1DB3BDC2B9004D500AFF578 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1DB3BE92B9004DC00AFF578 /* Preview Assets.xcassets in Resources */,
+				D1DB3BE62B9004DC00AFF578 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D1DB3BDA2B9004D500AFF578 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1DB3BE42B9004D500AFF578 /* ContentView.swift in Sources */,
+				D1DB3BFF2B904A8300AFF578 /* Persistence.swift in Sources */,
+				D11C63572B90EC4F008B7324 /* FortuneResultEntity+CoreDataProperties.swift in Sources */,
+				D1DB3BF02B900BFC00AFF578 /* FetchFortune.swift in Sources */,
+				D11C63562B90EC4F008B7324 /* FortuneResultEntity+CoreDataClass.swift in Sources */,
+				D1DB3BFD2B90474600AFF578 /* FortuneResponseEntity+CoreDataProperties.swift in Sources */,
+				D1DB3BE22B9004D500AFF578 /* FortunePrefectureApp.swift in Sources */,
+				D1DB3BF22B901BF800AFF578 /* Models.swift in Sources */,
+				D1DB3BF52B90381800AFF578 /* FortunePrefecture.xcdatamodeld in Sources */,
+				D11C635A2B90FA24008B7324 /* FortuneResultViewModel.swift in Sources */,
+				D11C63532B9064E7008B7324 /* HistoryView.swift in Sources */,
+				D1DB3BFC2B90474600AFF578 /* FortuneResponseEntity+CoreDataClass.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D1DB3BEA2B9004DC00AFF578 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D1DB3BEB2B9004DC00AFF578 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D1DB3BED2B9004DC00AFF578 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FortunePrefecture/Preview Content\"";
+				DEVELOPMENT_TEAM = 9P5G2WG9H5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.FortunePrefecture;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D1DB3BEE2B9004DC00AFF578 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FortunePrefecture/Preview Content\"";
+				DEVELOPMENT_TEAM = 9P5G2WG9H5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.FortunePrefecture;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D1DB3BD92B9004D500AFF578 /* Build configuration list for PBXProject "FortunePrefecture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1DB3BEA2B9004DC00AFF578 /* Debug */,
+				D1DB3BEB2B9004DC00AFF578 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1DB3BEC2B9004DC00AFF578 /* Build configuration list for PBXNativeTarget "FortunePrefecture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1DB3BED2B9004DC00AFF578 /* Debug */,
+				D1DB3BEE2B9004DC00AFF578 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D1DB3BF32B90381600AFF578 /* FortunePrefecture.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D1DB3BF42B90381700AFF578 /* FortunePrefecture.xcdatamodel */,
+			);
+			currentVersion = D1DB3BF42B90381700AFF578 /* FortunePrefecture.xcdatamodel */;
+			path = FortunePrefecture.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D1DB3BD62B9004D500AFF578 /* Project object */;
+}
