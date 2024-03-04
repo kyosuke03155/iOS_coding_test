@@ -1,84 +1,26 @@
+//
+//  PrefectureDetailView.swift
+//  FortunePrefecture
+//
+//  Created by 石津恭介 on 2024/03/04.
+//
+
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
-    
-    
-    var body: some View {
-        TabView {
-            FirstView()
-                .tabItem {
-                    Image(systemName: "star.fill")
-                    Text("占い")
-                }
-            HistoryView()
-                .tabItem {
-                    Image(systemName: "clock.fill")
-                    Text("履歴")
-                }
-            
-            HistoryView()
-                .tabItem {
-                    Image(systemName: "heart.fill")
-                    Text("お気に入り")
-                }
-        }
-    }
-}
-
-struct FirstView: View {
-    @StateObject private var viewModel = FortuneViewModel()
-    var body: some View {
-        NavigationView {
-            VStack {
-                TextField("名前を入力してください", text: $viewModel.name)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-                
-                DatePicker("生年月日を選択してください", selection: $viewModel.birthday, in: viewModel.startDate...Date(), displayedComponents: .date)
-                    .padding()
-                
-                Picker("血液型を選択してください", selection: $viewModel.bloodType) {
-                    ForEach(viewModel.bloodTypes, id: \.self) { type in
-                        Text(type).tag(type.lowercased())
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding()
-                
-                Button("占いを実行") {
-                    viewModel.fetchFortune()
-                }
-                .padding()
-                
-                Text(viewModel.result)
-                    .padding()
-                
-                if let url = URL(string: viewModel.logoUrl), !viewModel.logoUrl.isEmpty {
-                    AsyncImage(url: url) { image in
-                        image.resizable().aspectRatio(contentMode: .fit)
-                    } placeholder: {
-                        ProgressView()
-                    }
-                    .frame(width: 200, height: 200)
-                    .padding()
-                }
-                
-                NavigationLink(destination: PrefectureDetailView(prefecture: viewModel.fortuneResponse)) {
-                    Text("遷移")
-                        .padding()
-                }
-            }
-        }
-    }
-}
 
 struct PrefectureDetailView: View {
-    let prefecture: FortuneResponse
+    let prefecture: Prefecture = Prefecture()
     @State var isFavorite: Bool = false
     @State var pre:  String = ""
     @StateObject private var viewModel = FortuneResultViewModel()
+    @StateObject private var prefectureVM = PrefectureViewModel()
     
+    init(prefecture: Prefecture) {
+        self.prefectureVM.prefecture = self.prefecture
+        self.prefectureVM.addPrefecture2()
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
