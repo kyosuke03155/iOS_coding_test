@@ -10,58 +10,55 @@ import CoreData
 
 struct HistoryView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @ObservedObject var viewModel = FortuneResultViewModel.shared
+    @StateObject var viewModel = PersonViewModel()
+    @StateObject var personVM = PersonViewModel()
     
-    // Core DataからFortuneResponseEntityのフェッチリクエストを作成
-    /*@FetchRequest(
-     entity: FortuneResultEntity.entity(),
-     sortDescriptors: [],
-     predicate: NSPredicate(format: "is_favorite == %@", NSNumber(value: true))
-     ) var fortuneList: FetchedResults<FortuneResultEntity>
-     */
+    
     var body: some View {
-        List {
-                ForEach(viewModel.fortuneResults ?? []) { fortuneResult in
-                    HStack {
-                        Text(fortuneResult.prefecture ?? "不明な都道府県")
-                    
-                        
-                            AsyncImage(url: URL(string: fortuneResult.logo_url)) { phase in
-                                switch phase {
-                                case .empty:
-                                    // 画像が読み込まれていない間に表示するビュー
-                                    ProgressView()
-                                case .success(let image):
-                                    // 読み込み成功時に画像を表示
-                                    image.resizable().aspectRatio(contentMode: .fit)
-                                case .failure:
-                                    // 読み込み失敗時に表示するビュー
-                                    Image(systemName: "exclamationmark.circle")
-                                @unknown default:
-                                    EmptyView()
-                                }
+        NavigationView {
+            List {
+                ForEach(viewModel.people ?? []) {person in
+                    NavigationLink(destination: FortuneDetailView(personVM: PersonViewModel(person:person))) {
+                        HStack {
+                            VStack{
+                                //Text(String(person.today) ?? "")
+                                Text(person.name ??  "")
                             }
-                            .frame(width: 50, height: 50)
+                            Text(person.prefecture?.name ?? "不明な都道府県")
+                            Spacer()
+                            AsyncImage(url: URL(string: person.prefecture?.logo_url ?? "")) { image in
+                                image.resizable().aspectRatio(contentMode: .fit)
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 60, height: 40)
                             .cornerRadius(10)
-                            .padding(.top)
-                        
+                           // Text(person.id.uuidString ?? "")
+                        }
                     }
                 }
-                .onDelete(perform: deleteItem)
+                .onDelete(perform: deletePerson)
             }
+            .navigationTitle("占い履歴")
             .onAppear {
-                viewModel.fetchFavoriteResults(context: viewContext)
+                viewModel.fetchPeople()
             }
+        }
     }
+    private func deletePerson(at offsets: IndexSet) {
+        print("melody")
+    
+            for index in offsets {
+                print(viewModel.people?[index].id)
+                      
+                // 対象のPersonオブジェクトを取得
+                guard let personToDelete = viewModel.people?[index] else { return }
+
+                        // Core DataのコンテキストからPersonオブジェクトを削除
+                        viewModel.deletePerson(person: personToDelete)
+            }
+            viewModel.fetchPeople() // データを再フェッチしてUIを更新
+        }
 }
 
-func deleteItem(at offsets: IndexSet) {
-    print("jj")
-    // ここに項目を削除するロジックを実装します。
-    // 例えば、viewModel.fortuneResultsから特定の項目を削除する場合:
-    // viewModel.fortuneResults?.remove(atOffsets: offsets)
-}
 
-#Preview {
-    HistoryView()
-}

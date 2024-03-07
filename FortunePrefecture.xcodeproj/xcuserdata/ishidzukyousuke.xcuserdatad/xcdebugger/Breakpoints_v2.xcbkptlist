@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "08601879-D318-469D-A2E1-510569C504B8"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6159277A-AACD-46DB-BDEA-CD1C371B6425"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PrefectureEntity+CoreDataProperties.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "citizenDayMonthDay"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "6159277A-AACD-46DB-BDEA-CD1C371B6425 - d012c3f7c536cc8c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FortunePrefecture.PrefectureEntity.citizenDayMonthDay.modify : Swift.Optional&lt;FortunePrefecture.MonthDay&gt;"
+                  moduleName = "FortunePrefecture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishidzukyousuke/Desktop/sourcefiles/iOS_App/FortunePrefecture/PrefectureEntity+CoreDataProperties.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "6159277A-AACD-46DB-BDEA-CD1C371B6425 - 367f6a3f5524dca7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FortunePrefecture.PrefectureEntity.citizenDayMonthDay.modify : Swift.Optional&lt;FortunePrefecture.MonthDay&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "FortunePrefecture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishidzukyousuke/Desktop/sourcefiles/iOS_App/FortunePrefecture/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "17">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2DE8579C-F09D-4408-8314-F89DBD0B5847"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FortunePrefecture/Models.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "YearMonthDay"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

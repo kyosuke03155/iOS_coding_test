@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+/*
 
 class FortuneViewModel: ObservableObject {
     let startDate: Date = Calendar.current.date(from: DateComponents(year: 1900, month: 1, day: 1)) ?? Date()
@@ -96,7 +96,7 @@ class FortuneAPI {
         }.resume()
     }
 }
-
+*/
 /*
 final class PrefectureFetcher {
     private let baseURL = "https://yumemi-ios-junior-engineer-codecheck.app.swift.cloud"

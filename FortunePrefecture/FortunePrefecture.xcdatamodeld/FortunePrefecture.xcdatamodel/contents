@@ -12,4 +12,23 @@
         <attribute name="today" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
+    <entity name="PersonEntity" representedClassName="PersonEntity" syncable="YES">
+        <attribute name="birthday" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="bloodType" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="today" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="prefecture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PrefectureEntity" inverseName="people" inverseEntity="PrefectureEntity"/>
+    </entity>
+    <entity name="PrefectureEntity" representedClassName="PrefectureEntity" syncable="YES">
+        <attribute name="brief" optional="YES" attributeType="String"/>
+        <attribute name="capital" optional="YES" attributeType="String"/>
+        <attribute name="citizenDay" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="hasCoastLine" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="logoUrl" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="people" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PersonEntity" inverseName="prefecture" inverseEntity="PersonEntity"/>
+    </entity>
 </model>

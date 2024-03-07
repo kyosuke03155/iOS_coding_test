@@ -41,7 +41,24 @@ extension PrefectureEntity {
 
     @objc(removePeople:)
     @NSManaged public func removeFromPeople(_ values: NSSet)
-
+    
+    var citizenDayMonthDay: MonthDay? {
+            get {
+                guard let citizenDay = citizenDay else { return nil }
+                return MonthDay(date: citizenDay)
+            }
+            set {
+                guard let newValue = newValue else {
+                    citizenDay = nil
+                    return
+                }
+                let calendar = Calendar.current
+                if let date = calendar.date(from: DateComponents(year: Calendar.current.component(.year, from: Date()), month: newValue.month, day: newValue.day)) {
+                    citizenDay = date
+                }
+            }
+        }
+    
 }
 
 extension PrefectureEntity : Identifiable {

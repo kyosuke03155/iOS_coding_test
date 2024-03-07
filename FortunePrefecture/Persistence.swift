@@ -11,6 +11,7 @@ class PersistenceController {
     static let shared = PersistenceController()
     
     let container: NSPersistentContainer
+    let context: NSManagedObjectContext
     
     init() {
         container = NSPersistentContainer(name: "FortunePrefecture")
@@ -19,6 +20,7 @@ class PersistenceController {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         }
+        context = container.viewContext
     }
     
     func saveContext() {

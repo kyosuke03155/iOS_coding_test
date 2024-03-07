@@ -10,14 +10,17 @@ import CoreData
 
 struct PrefectureListView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @ObservedObject var viewModel2 = PrefectureViewModel.shared
+    @ObservedObject var viewModel2 = PrefectureViewModel()
+    
     var body: some View {
-        List {
+        NavigationView {
+            List {
                 ForEach(viewModel2.prefectures ?? []) {prefecture in
-                    HStack {
-                        Text(prefecture.name ?? "不明な都道府県")
-                    
-                        
+                    NavigationLink(destination: PrefectureDetailView(prefectureVM: PrefectureViewModel(prefecture:prefecture))) {
+                        HStack {
+                            Text(prefecture.name ?? "不明な都道府県")
+                            Spacer()
+                            
                             AsyncImage(url: URL(string: prefecture.logo_url)) { phase in
                                 switch phase {
                                 case .empty:
@@ -36,14 +39,15 @@ struct PrefectureListView: View {
                             .frame(width: 50, height: 50)
                             .cornerRadius(10)
                             .padding(.top)
-                        
+                            
+                        }
                     }
                 }
-                .onDelete(perform: deleteItem)
             }
+            .navigationTitle("都道府県コレクション")
             .onAppear {
                 viewModel2.fetchAllPrefectures()
             }
+        }
     }
-    
 }
