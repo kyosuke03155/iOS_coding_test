@@ -16,7 +16,8 @@ struct PrefectureDetailView: View {
                         
                         Text("県庁所在地: \(prefectureVM.prefecture?.capital ?? "不明")")
                             .font(.headline)
-                        
+                        Text("県民の日: \(prefectureVM.prefecture?.citizen_day?.toString() ?? "無し" )")
+                            .font(.headline)
                         Text((prefectureVM.prefecture?.has_coast_line == true) ? "海岸線あり" : "海岸線なし")
                         HStack {
                             Image(systemName: (prefectureVM.prefecture?.has_coast_line == true) ? "waveform.path.ecg" : "mountain")

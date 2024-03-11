@@ -38,15 +38,12 @@ final class PrefectureViewModel: ObservableObject {
             
             do {
                 try context.save()
-                print("Prefecture saved successfully")
                 return newPrefecture
             } catch {
-                print("Failed to save prefecture: \(error)")
                 return nil
             }
         }
         else{
-            print("すでに存在する都道府県です")
             return prefecrureEntity
         }
     }

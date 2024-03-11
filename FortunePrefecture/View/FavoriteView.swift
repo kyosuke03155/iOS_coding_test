@@ -15,11 +15,11 @@ struct FavoriteView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.people ?? []) {fortuneResult in
-                    NavigationLink(destination: FortuneDetailView(personVM: PersonViewModel(person:fortuneResult))) {
+                ForEach(viewModel.people ?? []) {person in
+                    NavigationLink(destination: FortuneDetailView(personVM: PersonViewModel(person:person))) {
                         HStack {
-                            Text(fortuneResult.prefecture?.name ?? "不明な都道府県")
-                            Text(fortuneResult.id.uuidString ?? "")
+                            Text(person.prefecture?.name ?? "不明な都道府県")
+                            Text(person.id.uuidString )
                         }
                     }
                 }

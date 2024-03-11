@@ -22,7 +22,7 @@ struct HistoryView: View {
                         HStack {
                             VStack{
                                 //Text(String(person.today) ?? "")
-                                Text(person.name ??  "")
+                                Text(person.name)
                             }
                             Text(person.prefecture?.name ?? "不明な都道府県")
                             Spacer()
@@ -46,17 +46,14 @@ struct HistoryView: View {
         }
     }
     private func deletePerson(at offsets: IndexSet) {
-        
         for index in offsets {
-            print(viewModel.people?[index].id)
-            
-            // 対象のPersonオブジェクトを取得
-            guard let personToDelete = viewModel.people?[index] else { return }
-            
-            // Core DataのコンテキストからPersonオブジェクトを削除
+            guard let personToDelete = viewModel.people?[index] else { 
+                print("エラ＾")
+                return }
             viewModel.deletePerson(person: personToDelete)
         }
-        viewModel.fetchPeople() // データを再フェッチしてUIを更新
+        //データの再フェッチ
+        viewModel.fetchPeople()
     }
 }
 

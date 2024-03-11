@@ -24,9 +24,12 @@
 		D1DB3BE42B9004D500AFF578 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BE32B9004D500AFF578 /* ContentView.swift */; };
 		D1DB3BE62B9004DC00AFF578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1DB3BE52B9004DC00AFF578 /* Assets.xcassets */; };
 		D1DB3BE92B9004DC00AFF578 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1DB3BE82B9004DC00AFF578 /* Preview Assets.xcassets */; };
-		D1DB3BF22B901BF800AFF578 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BF12B901BF800AFF578 /* Models.swift */; };
+		D1DB3BF22B901BF800AFF578 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BF12B901BF800AFF578 /* Utilities.swift */; };
 		D1DB3BF52B90381800AFF578 /* FortunePrefecture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BF32B90381600AFF578 /* FortunePrefecture.xcdatamodeld */; };
 		D1DB3BFF2B904A8300AFF578 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BFE2B904A8300AFF578 /* Persistence.swift */; };
+		D1DB9B972B9F94CF00A39DA9 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB9B962B9F94CF00A39DA9 /* Person.swift */; };
+		D1DB9B992B9F94FB00A39DA9 /* Prefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB9B982B9F94FB00A39DA9 /* Prefecture.swift */; };
+		D1DB9B9B2B9F965700A39DA9 /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB9B9A2B9F965700A39DA9 /* APIModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,9 +51,12 @@
 		D1DB3BE32B9004D500AFF578 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D1DB3BE52B9004DC00AFF578 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1DB3BE82B9004DC00AFF578 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D1DB3BF12B901BF800AFF578 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		D1DB3BF12B901BF800AFF578 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		D1DB3BF42B90381700AFF578 /* FortunePrefecture.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FortunePrefecture.xcdatamodel; sourceTree = "<group>"; };
 		D1DB3BFE2B904A8300AFF578 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		D1DB9B962B9F94CF00A39DA9 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		D1DB9B982B9F94FB00A39DA9 /* Prefecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prefecture.swift; sourceTree = "<group>"; };
+		D1DB9B9A2B9F965700A39DA9 /* APIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +83,10 @@
 		D1A066012B95C7F70014DFB4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D1DB3BF12B901BF800AFF578 /* Models.swift */,
+				D1DB3BF12B901BF800AFF578 /* Utilities.swift */,
+				D1DB9B9A2B9F965700A39DA9 /* APIModels.swift */,
+				D1DB9B962B9F94CF00A39DA9 /* Person.swift */,
+				D1DB9B982B9F94FB00A39DA9 /* Prefecture.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -220,17 +229,20 @@
 				D17D68372B96665B008C81F7 /* PersonEntity+CoreDataClass.swift in Sources */,
 				D1DB3BE42B9004D500AFF578 /* ContentView.swift in Sources */,
 				D1DB3BFF2B904A8300AFF578 /* Persistence.swift in Sources */,
+				D1DB9B9B2B9F965700A39DA9 /* APIModels.swift in Sources */,
 				D1A066032B95C8D70014DFB4 /* PersonViewModel.swift in Sources */,
 				D1A066052B95C8E60014DFB4 /* PrefectureViewModel.swift in Sources */,
 				D1A066072B95CAD20014DFB4 /* FortuneViewModel.swift in Sources */,
 				D1A066152B95DB870014DFB4 /* PredictView.swift in Sources */,
 				D1B2DF0C2B99E92B00834D29 /* PrefectureDetailView.swift in Sources */,
 				D1DB3BE22B9004D500AFF578 /* FortunePrefectureApp.swift in Sources */,
-				D1DB3BF22B901BF800AFF578 /* Models.swift in Sources */,
+				D1DB3BF22B901BF800AFF578 /* Utilities.swift in Sources */,
 				D1DB3BF52B90381800AFF578 /* FortunePrefecture.xcdatamodeld in Sources */,
 				D17D68342B966650008C81F7 /* PrefectureEntity+CoreDataClass.swift in Sources */,
+				D1DB9B992B9F94FB00A39DA9 /* Prefecture.swift in Sources */,
 				D17D68382B96665B008C81F7 /* PersonEntity+CoreDataProperties.swift in Sources */,
 				D17D68322B966634008C81F7 /* PrefectureEntity+CoreDataProperties.swift in Sources */,
+				D1DB9B972B9F94CF00A39DA9 /* Person.swift in Sources */,
 				D11C63532B9064E7008B7324 /* HistoryView.swift in Sources */,
 				D1A066172B95E3800014DFB4 /* FortuneDetailView.swift in Sources */,
 				D1A066192B95E6EA0014DFB4 /* PrefectureListView.swift in Sources */,

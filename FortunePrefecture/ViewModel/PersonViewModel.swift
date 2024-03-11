@@ -14,9 +14,12 @@ class PersonViewModel: ObservableObject {
     
     
     private let context: NSManagedObjectContext = PersistenceController.shared.context
+    
+    //特定のPersonオブジェクトなしで初期化際に使用
     init() {
         
     }
+    
     init(person:Person){
         self.person = person
     }
@@ -54,35 +57,15 @@ class PersonViewModel: ObservableObject {
     }
     
     func deletePerson(person: Person) {
+        print(#function)
         let personId = person.id
         let request: NSFetchRequest<PersonEntity> = PersonEntity.fetchRequest()
         request.predicate = NSPredicate(format: "id == %@", personId.uuidString)
         request.fetchLimit = 1
-        print("d")
         do {
             let results = try context.fetch(request)
             if let personEntity = results.first {
-                print(personEntity)
-                try context.delete(personEntity)
-            }
-        } catch {
-            return // エラーが発生した場合、処理に失敗したことを示すためにnilを返す
-        }
-
-    }
-    
-    func syncFavorite(){
-        guard let personId = self.person?.id else {
-            return  // personがnilの場合、処理に失敗したことを示すためにnilを返す
-        }
-        let request: NSFetchRequest<PersonEntity> = PersonEntity.fetchRequest()
-        request.predicate = NSPredicate(format: "id == %@", personId.uuidString)
-        request.fetchLimit = 1
-
-        do {
-            let results = try context.fetch(request)
-            if let personEntity = results.first {
-                self.person!.is_favorite = personEntity.isFavorite
+                   context.delete(personEntity)
             }
         } catch {
             return
@@ -122,7 +105,7 @@ class PersonViewModel: ObservableObject {
             self.people = result.map { entity in
                 entityToModel(entity: entity)
             }
-            self.people = people!.sorted { $0.today < $1.today }
+            self.people = people!.sorted { $0.today > $1.today }
         } catch {
             print("Failed to fetch prefectures: \(error)")
             self.people = nil
@@ -231,13 +214,11 @@ class PersonViewModel: ObservableObject {
         request.predicate = NSPredicate(format: "isFavorite == %@", NSNumber(value: true))
             
          do {
-            let resultEntities = try context.fetch(request)
-            // Entityの配列をFortuneResultの配列に変換
-            self.people = resultEntities.map { entity in
+            let people = try context.fetch(request)
+            self.people = people.map { entity in
                 entityToModel(entity: entity)
             }
         } catch {
-            print("フェッチリクエスト失敗: \(error)")
             self.people = nil
         }
     }

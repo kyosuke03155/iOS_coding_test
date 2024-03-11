@@ -108,10 +108,7 @@ struct FortuneDetailView: View {
                     Button(action: {
                         if let newFavoriteStatus = personVM.toggleFavorite() {
                             isFavorite = newFavoriteStatus
-                            print(personVM.person?.is_favorite)
-                        } else {
-                            // toggleFavorite が失敗した場合の処理
-                            print("お気に入り状態の変更に失敗しました。")
+                           
                         }
                     }) {
                         isFavorite ? Image(systemName: "heart.fill") : Image(systemName: "heart")
@@ -121,13 +118,8 @@ struct FortuneDetailView: View {
             }
         }
         .onAppear{
-            //personVM.syncFavorite()
             personVM.fetchPerson{ result in
-                switch result {
-                case .success(_):
-                    // 成功時の処理をここに書く。このケースでは何もしない。
-                    break // 明示的に何もしないことを示す。
-                case .failure(let error):
+                if case .failure(let error) = result {
                     // エラー時の処理。エラーに応じた処理をここに書く。
                     print("Error fetching person: \(error.localizedDescription)")
                     self.presentationMode.wrappedValue.dismiss()
