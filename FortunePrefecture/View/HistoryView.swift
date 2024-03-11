@@ -33,7 +33,7 @@ struct HistoryView: View {
                             }
                             .frame(width: 60, height: 40)
                             .cornerRadius(10)
-                           // Text(person.id.uuidString ?? "")
+                            // Text(person.id.uuidString ?? "")
                         }
                     }
                 }
@@ -46,19 +46,18 @@ struct HistoryView: View {
         }
     }
     private func deletePerson(at offsets: IndexSet) {
-        print("melody")
-    
-            for index in offsets {
-                print(viewModel.people?[index].id)
-                      
-                // 対象のPersonオブジェクトを取得
-                guard let personToDelete = viewModel.people?[index] else { return }
-
-                        // Core DataのコンテキストからPersonオブジェクトを削除
-                        viewModel.deletePerson(person: personToDelete)
-            }
-            viewModel.fetchPeople() // データを再フェッチしてUIを更新
+        
+        for index in offsets {
+            print(viewModel.people?[index].id)
+            
+            // 対象のPersonオブジェクトを取得
+            guard let personToDelete = viewModel.people?[index] else { return }
+            
+            // Core DataのコンテキストからPersonオブジェクトを削除
+            viewModel.deletePerson(person: personToDelete)
         }
+        viewModel.fetchPeople() // データを再フェッチしてUIを更新
+    }
 }
 
 

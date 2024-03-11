@@ -10,12 +10,12 @@ import CoreData
 
 struct PrefectureListView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @ObservedObject var viewModel2 = PrefectureViewModel()
+    @StateObject var viewModel = PrefectureViewModel()
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel2.prefectures ?? []) {prefecture in
+                ForEach(viewModel.prefectures ?? []) {prefecture in
                     NavigationLink(destination: PrefectureDetailView(prefectureVM: PrefectureViewModel(prefecture:prefecture))) {
                         HStack {
                             Text(prefecture.name ?? "不明な都道府県")
@@ -46,7 +46,7 @@ struct PrefectureListView: View {
             }
             .navigationTitle("都道府県コレクション")
             .onAppear {
-                viewModel2.fetchAllPrefectures()
+                viewModel.fetchAllPrefectures()
             }
         }
     }

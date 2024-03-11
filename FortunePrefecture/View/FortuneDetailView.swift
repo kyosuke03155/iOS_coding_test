@@ -13,6 +13,7 @@ struct FortuneDetailView: View {
     
     @State var isFavorite: Bool = false
     @ObservedObject var personVM = PersonViewModel()
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ScrollView {
@@ -23,7 +24,7 @@ struct FortuneDetailView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                         .padding(.top)
-
+                    
                     VStack(alignment: .leading, spacing: 5) { // 要素間隔を5に設定
                         HStack {
                             Text("名前:")
@@ -72,7 +73,7 @@ struct FortuneDetailView: View {
                             .foregroundColor((personVM.person?.prefecture?.has_coast_line==true) ? .blue : .green)
                         Text((personVM.person?.prefecture?.has_coast_line==true) ? "海岸線あり" : "海岸線なし")
                     }
-
+                    
                     AsyncImage(url: URL(string: personVM.person?.prefecture?.logo_url ?? "")) { image in
                         image.resizable().aspectRatio(contentMode: .fit)
                     } placeholder: {
@@ -84,31 +85,53 @@ struct FortuneDetailView: View {
                         .font(.headline)
                     Text("県民の日: \(personVM.person?.prefecture?.citizen_day?.toString() ?? "無し" )")
                         .font(.headline)
-                
+                    
                 }
-                 
+                
             }
             .padding()
         }
         .navigationTitle("\(personVM.person?.name ?? "")さんの占い結果詳細")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    if let newFavoriteStatus = personVM.toggleFavorite() {
-                        isFavorite = newFavoriteStatus
-                        print(personVM.person?.is_favorite)
+                HStack{
+                    Button(action: {
+                        // ここに削除の処理を記述
+                        if personVM.person != nil {
+                            personVM.deletePerson(person: personVM.person!)
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                    }) {
+                        Image(systemName: "trash")
+                    }
+                    Button(action: {
+                        if let newFavoriteStatus = personVM.toggleFavorite() {
+                            isFavorite = newFavoriteStatus
+                            print(personVM.person?.is_favorite)
                         } else {
                             // toggleFavorite が失敗した場合の処理
                             print("お気に入り状態の変更に失敗しました。")
                         }
-                }) {
-                    isFavorite ? Image(systemName: "heart.fill") : Image(systemName: "heart")
+                    }) {
+                        isFavorite ? Image(systemName: "heart.fill") : Image(systemName: "heart")
+                    }
                 }
+                
             }
         }
         .onAppear{
             //personVM.syncFavorite()
-            personVM.fetchPerson()
+            personVM.fetchPerson{ result in
+                switch result {
+                case .success(_):
+                    // 成功時の処理をここに書く。このケースでは何もしない。
+                    break // 明示的に何もしないことを示す。
+                case .failure(let error):
+                    // エラー時の処理。エラーに応じた処理をここに書く。
+                    print("Error fetching person: \(error.localizedDescription)")
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            }
             isFavorite = personVM.person?.is_favorite ?? false
             print(isFavorite)
         }

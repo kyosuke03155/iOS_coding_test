@@ -54,7 +54,7 @@ final class PrefectureViewModel: ObservableObject {
     // すべての都道府県を取得するメソッド
     func fetchAllPrefectures(){
         let request: NSFetchRequest<PrefectureEntity> = PrefectureEntity.fetchRequest()
-        
+        print("fetchPrefectureByName")
         do {
             let result = try context.fetch(request)
             self.prefectures = result.map { entity in

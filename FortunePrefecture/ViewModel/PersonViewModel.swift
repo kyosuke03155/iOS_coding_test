@@ -78,8 +78,9 @@ class PersonViewModel: ObservableObject {
         }
     }
     
-    func fetchPerson(){
+    func fetchPerson(completion: @escaping (Result<Person, Error>) -> Void) {
         guard let personId = self.person?.id else {
+            completion(.failure(NSError(domain: "NoPersonID", code: -1, userInfo: nil)))
             return
         }
         let request: NSFetchRequest<PersonEntity> = PersonEntity.fetchRequest()
@@ -89,10 +90,16 @@ class PersonViewModel: ObservableObject {
         do {
             let results = try context.fetch(request)
             if let personEntity = results.first {
-                self.person = entityToModel(entity: personEntity)
+                // データが見つかった場合
+                let personModel = entityToModel(entity: personEntity)
+                completion(.success(personModel))
+            } else {
+                // データが存在しない場合
+                completion(.failure(NSError(domain: "PersonNotFound", code: 404, userInfo: nil)))
             }
         } catch {
-            return
+            // 他のエラーが発生した場合
+            completion(.failure(error))
         }
     }
     

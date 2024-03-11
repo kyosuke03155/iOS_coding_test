@@ -28,8 +28,22 @@ class FortuneViewModel: ObservableObject {
         self.prefectureVM = PrefectureViewModel()
         //self.fortuneResponse = FortuneResponse.preview
     }
+    
+    func reset(){
+        name = ""
+        birthday = Date()
+        bloodType = "a"
+        result = "占い結果がここに表示されます"
+        logoUrl = ""
+        self.personVM = PersonViewModel()
+        self.prefectureVM = PrefectureViewModel()
+    }
+    
 
-    func fetchFortune(name: String, birthday: Date, bloodType: String) {
+    //func fetchFortune(birthday: Date, bloodType: String) {
+    func fetchFortune() {
+
+        
         let today = Date()
         let todayYMD = YearMonthDay(date: today)
         let birthday = YearMonthDay(date: birthday)
@@ -38,7 +52,7 @@ class FortuneViewModel: ObservableObject {
         
         
         print(name, birthday, bloodType,today)
-        FortuneAPI.shared.fetchFortune(forName: name, birthday: birthday, bloodType: bloodType, today: todayYMD) { [weak self] result in
+        FortuneAPI.shared.fetchFortune(forName: self.name, birthday: birthday, bloodType: bloodType, today: todayYMD) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let prefecture):

@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D11C63532B9064E7008B7324 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11C63522B9064E7008B7324 /* HistoryView.swift */; };
-		D11C63562B90EC4F008B7324 /* FortuneResultEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11C63542B90EC4F008B7324 /* FortuneResultEntity+CoreDataClass.swift */; };
-		D11C63572B90EC4F008B7324 /* FortuneResultEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11C63552B90EC4F008B7324 /* FortuneResultEntity+CoreDataProperties.swift */; };
-		D11C635A2B90FA24008B7324 /* FortuneResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11C63592B90FA24008B7324 /* FortuneResultViewModel.swift */; };
 		D17D68322B966634008C81F7 /* PrefectureEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D68312B966633008C81F7 /* PrefectureEntity+CoreDataProperties.swift */; };
 		D17D68342B966650008C81F7 /* PrefectureEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D68332B96664F008C81F7 /* PrefectureEntity+CoreDataClass.swift */; };
 		D17D68372B96665B008C81F7 /* PersonEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D68352B96665B008C81F7 /* PersonEntity+CoreDataClass.swift */; };
@@ -18,7 +15,7 @@
 		D1A066032B95C8D70014DFB4 /* PersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A066022B95C8D70014DFB4 /* PersonViewModel.swift */; };
 		D1A066052B95C8E60014DFB4 /* PrefectureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A066042B95C8E60014DFB4 /* PrefectureViewModel.swift */; };
 		D1A066072B95CAD20014DFB4 /* FortuneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A066062B95CAD20014DFB4 /* FortuneViewModel.swift */; };
-		D1A066152B95DB870014DFB4 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A066142B95DB870014DFB4 /* FirstView.swift */; };
+		D1A066152B95DB870014DFB4 /* PredictView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A066142B95DB870014DFB4 /* PredictView.swift */; };
 		D1A066172B95E3800014DFB4 /* FortuneDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A066162B95E3800014DFB4 /* FortuneDetailView.swift */; };
 		D1A066192B95E6EA0014DFB4 /* PrefectureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A066182B95E6EA0014DFB4 /* PrefectureListView.swift */; };
 		D1A0661C2B9660000014DFB4 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A0661B2B9660000014DFB4 /* FavoriteView.swift */; };
@@ -27,19 +24,13 @@
 		D1DB3BE42B9004D500AFF578 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BE32B9004D500AFF578 /* ContentView.swift */; };
 		D1DB3BE62B9004DC00AFF578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1DB3BE52B9004DC00AFF578 /* Assets.xcassets */; };
 		D1DB3BE92B9004DC00AFF578 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1DB3BE82B9004DC00AFF578 /* Preview Assets.xcassets */; };
-		D1DB3BF02B900BFC00AFF578 /* FetchFortune.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BEF2B900BFC00AFF578 /* FetchFortune.swift */; };
 		D1DB3BF22B901BF800AFF578 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BF12B901BF800AFF578 /* Models.swift */; };
 		D1DB3BF52B90381800AFF578 /* FortunePrefecture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BF32B90381600AFF578 /* FortunePrefecture.xcdatamodeld */; };
-		D1DB3BFC2B90474600AFF578 /* FortuneResponseEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BFA2B90474600AFF578 /* FortuneResponseEntity+CoreDataClass.swift */; };
-		D1DB3BFD2B90474600AFF578 /* FortuneResponseEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BFB2B90474600AFF578 /* FortuneResponseEntity+CoreDataProperties.swift */; };
 		D1DB3BFF2B904A8300AFF578 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3BFE2B904A8300AFF578 /* Persistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D11C63522B9064E7008B7324 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		D11C63542B90EC4F008B7324 /* FortuneResultEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FortuneResultEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D11C63552B90EC4F008B7324 /* FortuneResultEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FortuneResultEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D11C63592B90FA24008B7324 /* FortuneResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneResultViewModel.swift; sourceTree = "<group>"; };
 		D17D68312B966633008C81F7 /* PrefectureEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PrefectureEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D17D68332B96664F008C81F7 /* PrefectureEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PrefectureEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D17D68352B96665B008C81F7 /* PersonEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PersonEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -47,7 +38,7 @@
 		D1A066022B95C8D70014DFB4 /* PersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
 		D1A066042B95C8E60014DFB4 /* PrefectureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureViewModel.swift; sourceTree = "<group>"; };
 		D1A066062B95CAD20014DFB4 /* FortuneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneViewModel.swift; sourceTree = "<group>"; };
-		D1A066142B95DB870014DFB4 /* FirstView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
+		D1A066142B95DB870014DFB4 /* PredictView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictView.swift; sourceTree = "<group>"; };
 		D1A066162B95E3800014DFB4 /* FortuneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneDetailView.swift; sourceTree = "<group>"; };
 		D1A066182B95E6EA0014DFB4 /* PrefectureListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureListView.swift; sourceTree = "<group>"; };
 		D1A0661B2B9660000014DFB4 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
@@ -57,11 +48,8 @@
 		D1DB3BE32B9004D500AFF578 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D1DB3BE52B9004DC00AFF578 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1DB3BE82B9004DC00AFF578 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D1DB3BEF2B900BFC00AFF578 /* FetchFortune.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFortune.swift; sourceTree = "<group>"; };
 		D1DB3BF12B901BF800AFF578 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		D1DB3BF42B90381700AFF578 /* FortunePrefecture.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FortunePrefecture.xcdatamodel; sourceTree = "<group>"; };
-		D1DB3BFA2B90474600AFF578 /* FortuneResponseEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FortuneResponseEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D1DB3BFB2B90474600AFF578 /* FortuneResponseEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FortuneResponseEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D1DB3BFE2B904A8300AFF578 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,7 +67,6 @@
 		D11C63582B90F9EF008B7324 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				D11C63592B90FA24008B7324 /* FortuneResultViewModel.swift */,
 				D1A066022B95C8D70014DFB4 /* PersonViewModel.swift */,
 				D1A066062B95CAD20014DFB4 /* FortuneViewModel.swift */,
 				D1A066042B95C8E60014DFB4 /* PrefectureViewModel.swift */,
@@ -90,6 +77,7 @@
 		D1A066012B95C7F70014DFB4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D1DB3BF12B901BF800AFF578 /* Models.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -103,7 +91,7 @@
 				D1B2DF0B2B99E92B00834D29 /* PrefectureDetailView.swift */,
 				D1A0661B2B9660000014DFB4 /* FavoriteView.swift */,
 				D1A066182B95E6EA0014DFB4 /* PrefectureListView.swift */,
-				D1A066142B95DB870014DFB4 /* FirstView.swift */,
+				D1A066142B95DB870014DFB4 /* PredictView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -127,22 +115,11 @@
 		D1DB3BE02B9004D500AFF578 /* FortunePrefecture */ = {
 			isa = PBXGroup;
 			children = (
+				D1E08BC42B9F3C100039B30C /* Database */,
 				D1A0661A2B95FB3E0014DFB4 /* View */,
-				D17D68332B96664F008C81F7 /* PrefectureEntity+CoreDataClass.swift */,
-				D17D68352B96665B008C81F7 /* PersonEntity+CoreDataClass.swift */,
-				D17D68362B96665B008C81F7 /* PersonEntity+CoreDataProperties.swift */,
-				D17D68312B966633008C81F7 /* PrefectureEntity+CoreDataProperties.swift */,
 				D1A066012B95C7F70014DFB4 /* Model */,
 				D11C63582B90F9EF008B7324 /* ViewModel */,
 				D1DB3BE12B9004D500AFF578 /* FortunePrefectureApp.swift */,
-				D11C63552B90EC4F008B7324 /* FortuneResultEntity+CoreDataProperties.swift */,
-				D11C63542B90EC4F008B7324 /* FortuneResultEntity+CoreDataClass.swift */,
-				D1DB3BFB2B90474600AFF578 /* FortuneResponseEntity+CoreDataProperties.swift */,
-				D1DB3BFE2B904A8300AFF578 /* Persistence.swift */,
-				D1DB3BFA2B90474600AFF578 /* FortuneResponseEntity+CoreDataClass.swift */,
-				D1DB3BF32B90381600AFF578 /* FortunePrefecture.xcdatamodeld */,
-				D1DB3BF12B901BF800AFF578 /* Models.swift */,
-				D1DB3BEF2B900BFC00AFF578 /* FetchFortune.swift */,
 				D1DB3BE52B9004DC00AFF578 /* Assets.xcassets */,
 				D1DB3BE72B9004DC00AFF578 /* Preview Content */,
 			);
@@ -155,6 +132,19 @@
 				D1DB3BE82B9004DC00AFF578 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D1E08BC42B9F3C100039B30C /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				D1DB3BFE2B904A8300AFF578 /* Persistence.swift */,
+				D17D68332B96664F008C81F7 /* PrefectureEntity+CoreDataClass.swift */,
+				D17D68352B96665B008C81F7 /* PersonEntity+CoreDataClass.swift */,
+				D17D68362B96665B008C81F7 /* PersonEntity+CoreDataProperties.swift */,
+				D1DB3BF32B90381600AFF578 /* FortunePrefecture.xcdatamodeld */,
+				D17D68312B966633008C81F7 /* PrefectureEntity+CoreDataProperties.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,24 +220,18 @@
 				D17D68372B96665B008C81F7 /* PersonEntity+CoreDataClass.swift in Sources */,
 				D1DB3BE42B9004D500AFF578 /* ContentView.swift in Sources */,
 				D1DB3BFF2B904A8300AFF578 /* Persistence.swift in Sources */,
-				D11C63572B90EC4F008B7324 /* FortuneResultEntity+CoreDataProperties.swift in Sources */,
 				D1A066032B95C8D70014DFB4 /* PersonViewModel.swift in Sources */,
 				D1A066052B95C8E60014DFB4 /* PrefectureViewModel.swift in Sources */,
 				D1A066072B95CAD20014DFB4 /* FortuneViewModel.swift in Sources */,
-				D1A066152B95DB870014DFB4 /* FirstView.swift in Sources */,
+				D1A066152B95DB870014DFB4 /* PredictView.swift in Sources */,
 				D1B2DF0C2B99E92B00834D29 /* PrefectureDetailView.swift in Sources */,
-				D1DB3BF02B900BFC00AFF578 /* FetchFortune.swift in Sources */,
-				D11C63562B90EC4F008B7324 /* FortuneResultEntity+CoreDataClass.swift in Sources */,
-				D1DB3BFD2B90474600AFF578 /* FortuneResponseEntity+CoreDataProperties.swift in Sources */,
 				D1DB3BE22B9004D500AFF578 /* FortunePrefectureApp.swift in Sources */,
 				D1DB3BF22B901BF800AFF578 /* Models.swift in Sources */,
 				D1DB3BF52B90381800AFF578 /* FortunePrefecture.xcdatamodeld in Sources */,
 				D17D68342B966650008C81F7 /* PrefectureEntity+CoreDataClass.swift in Sources */,
 				D17D68382B96665B008C81F7 /* PersonEntity+CoreDataProperties.swift in Sources */,
-				D11C635A2B90FA24008B7324 /* FortuneResultViewModel.swift in Sources */,
 				D17D68322B966634008C81F7 /* PrefectureEntity+CoreDataProperties.swift in Sources */,
 				D11C63532B9064E7008B7324 /* HistoryView.swift in Sources */,
-				D1DB3BFC2B90474600AFF578 /* FortuneResponseEntity+CoreDataClass.swift in Sources */,
 				D1A066172B95E3800014DFB4 /* FortuneDetailView.swift in Sources */,
 				D1A066192B95E6EA0014DFB4 /* PrefectureListView.swift in Sources */,
 				D1A0661C2B9660000014DFB4 /* FavoriteView.swift in Sources */,
