@@ -41,7 +41,7 @@ struct FortuneDetailView: View {
                         }
                         Text("血液型:")
                             .bold()
-                        Text(personVM.person?.birthday.toString() ?? "不明")
+                        //Text(personVM.person?.birthday.toString() ?? "不明")
                         Spacer()
                         
                     }
@@ -55,7 +55,7 @@ struct FortuneDetailView: View {
                 }
                 
                 Divider()
-                Text(personVM.person?.birthday.toString() ?? "不明")
+                //Text(personVM.person?.birthday.toString() ?? "不明")
                 // レスポンス情報の表示
                 Group {
                     
@@ -98,6 +98,7 @@ struct FortuneDetailView: View {
                     Button(action: {
                         // ここに削除の処理を記述
                         if personVM.person != nil {
+                            personVM.person!.is_favorite = false
                             personVM.deletePerson(person: personVM.person!)
                             self.presentationMode.wrappedValue.dismiss()
                         }

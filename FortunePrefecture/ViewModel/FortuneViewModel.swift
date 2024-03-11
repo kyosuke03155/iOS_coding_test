@@ -18,11 +18,15 @@ class FortuneViewModel: ObservableObject {
     @Published var bloodType: String = "a"
     @Published var result: String = "占い結果がここに表示されます"
     @Published var logoUrl: String = "" // 初期状態は空
+    private var lastFetchedName: String?
+    private var lastFetchedBirthday: Date?
+    private var lastFetchedBloodType: String?
+    
     //@Published var fortuneResponse: FortuneResponse
     
     private let context: NSManagedObjectContext = PersistenceController.shared.context
     let bloodTypes = ["A", "B", "O", "AB"]
-
+    
     init() {
         self.personVM = PersonViewModel()
         self.prefectureVM = PrefectureViewModel()
@@ -39,20 +43,24 @@ class FortuneViewModel: ObservableObject {
         self.prefectureVM = PrefectureViewModel()
     }
     
-
+    
     //func fetchFortune(birthday: Date, bloodType: String) {
     func fetchFortune() {
-
+        
+        guard name != lastFetchedName || birthday != lastFetchedBirthday || bloodType != lastFetchedBloodType else {
+            print("変更がありません")
+            return
+        }
         
         let today = Date()
         let todayYMD = YearMonthDay(date: today)
-        let birthday = YearMonthDay(date: birthday)
-
+        let birthdayYMD = YearMonthDay(date: birthday)
+        
         self.personVM.person = Person(name: name, birthday: birthday, bloodType: bloodType, today: today)
         
         
         print(name, birthday, bloodType,today)
-        FortuneAPI.shared.fetchFortune(forName: self.name, birthday: birthday, bloodType: bloodType, today: todayYMD) { [weak self] result in
+        FortuneAPI.shared.fetchFortune(forName: self.name, birthday: birthdayYMD, bloodType: bloodType, today: todayYMD) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let prefecture):
@@ -69,6 +77,9 @@ class FortuneViewModel: ObservableObject {
                 }
             }
         }
+        lastFetchedName = name
+        lastFetchedBirthday = birthday
+        lastFetchedBloodType = bloodType
     }
 }
 

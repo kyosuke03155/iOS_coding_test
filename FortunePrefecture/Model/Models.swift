@@ -26,7 +26,7 @@ enum BloodTypes: String, CaseIterable, Identifiable {
 struct Person: Identifiable, Codable,Hashable {
     var id = UUID()
     var name: String
-    var birthday: YearMonthDay
+    var birthday: Date
     var blood_type: String
     //var today: YearMonthDay
     var today: Date
@@ -36,7 +36,7 @@ struct Person: Identifiable, Codable,Hashable {
     // イニシャライザを使用して初期値を設定
     init(id: UUID = UUID(),
         name: String = "ゆめみん",
-         birthday: YearMonthDay = YearMonthDay(year: 1990, month: 1, day: 1),
+         birthday: Date = Date(),
          bloodType: String = "AB",
          today: Date = Date(),
          prefecture: Prefecture? = nil,

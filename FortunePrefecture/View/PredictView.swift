@@ -1,16 +1,12 @@
 import SwiftUI
-import CoreData
-
+//import CoreData
 
 struct PredictView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    //@Environment(\.managedObjectContext) private var viewContext
     @StateObject private var viewModel = FortuneViewModel()
-    @State private var name = ""
-    @State private var birthday = Date()
-    @State private var bloodType = "a"
-    
-    init() {
-    }
+    @State private var isShowAlert = false
+    @FocusState var focus:Bool
+    @State private var showDetailView = false
     
     var body: some View {
         NavigationView {
@@ -19,11 +15,14 @@ struct PredictView: View {
                     
                     Spacer()
                     TextField("名前を入力してください", text: $viewModel.name)
+                        .submitLabel(SubmitLabel.done)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal)
+                        .focused(self.$focus)
                     
                     DatePicker("生年月日を選択してください", selection: $viewModel.birthday, in: viewModel.startDate...Date(), displayedComponents: .date)
                         .padding(.horizontal)
+                    
                     
                     Picker("血液型を選択してください", selection: $viewModel.bloodType) {
                         ForEach(BloodTypes.allCases, id: \.self) { type in
@@ -32,6 +31,11 @@ struct PredictView: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal)
+                    .onChange(of: viewModel.bloodType) {
+                        
+                        focus = false
+                    }
+                    
                     
                     HStack{
                         Button("リセット") {
@@ -42,10 +46,10 @@ struct PredictView: View {
                         .padding()
                         .buttonStyle(.borderedProminent) // ボタンのスタイルを強調
                         Button("占いを実行") {
+                            focus = false
                             if (viewModel.name == ""){
-                                print("入力して")
+                                isShowAlert.toggle()
                             }else{
-                                //viewModel.fetchFortune(birthday: birthday, bloodType: bloodType)
                                 viewModel.fetchFortune()
                             }
                             
@@ -69,24 +73,39 @@ struct PredictView: View {
                             .padding()
                         }
                         
+                        NavigationLink(destination: FortuneDetailView(personVM: viewModel.personVM), isActive: $showDetailView) {
+                            EmptyView()
+                        }
                         
-                        NavigationLink(destination: FortuneDetailView(personVM: viewModel.personVM)) {
+                        Button(action: {
+                            // ここで必要な処理を実行
+                            //performSomeAction()
+                            print(#function)
+                            viewModel.personVM.addPerson()
+                            // 処理が完了したら画面遷移をトリガー
+                            showDetailView = true
+                        }) {
                             Text("詳細を見る")
                                 .padding()
-                                .background(Color.blue) // ナビゲーションリンクの背景色
-                                .foregroundColor(.white) // ナビゲーションリンクのテキスト色
-                                .cornerRadius(10) // 角の丸み
+                                .background(Color.blue) // ボタンの背景色
+                                .foregroundColor(.white) // ボタンのテキスト色
+                                .cornerRadius(10) // ボタンの角の丸み
                         }
                     }
                     
                 }
                 .padding(.bottom, 20)
+                
             }
             .navigationTitle("都道府県占い")
-            //.navigationBarTitleDisplayMode(.inline)
+        }
+        .alert("名前を入力してください", isPresented: $isShowAlert) {
+            
+        } message: {
+            // アラートのメッセージ...
+            Text("占いができません")
         }
     }
 }
-
 
 

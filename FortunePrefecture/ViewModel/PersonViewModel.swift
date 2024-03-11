@@ -21,25 +21,36 @@ class PersonViewModel: ObservableObject {
         self.person = person
     }
     
-    func addPerson(){
-        if (self.person == nil){
+    func addPerson() {
+        guard let personDetail = self.person else {
             return
         }
         
-        let newPerson = PersonEntity(context: context)
-        newPerson.id = self.person?.id
-        newPerson.name = self.person?.name
-        newPerson.birthday = self.person?.birthday.toDate()
-        newPerson.bloodType = self.person?.blood_type
-        newPerson.today = self.person?.today
-        newPerson.prefecture = addPrefecture(prefecture: self.person?.prefecture ?? Prefecture())
-        do {
-            try context.save()
-            print("Person saved successfully")
-        } catch {
-            print("Failed to save person: \(error)")
-        }
+        let fetchRequest: NSFetchRequest<PersonEntity> = PersonEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", personDetail.id as CVarArg)
         
+        do {
+            let results = try context.fetch(fetchRequest)
+            if results.isEmpty {
+                // IDに一致するPersonEntityが存在しない場合、新しいエンティティを追加
+                let newPerson = PersonEntity(context: context)
+                newPerson.id = personDetail.id
+                newPerson.name = personDetail.name
+                newPerson.birthday = personDetail.birthday
+                newPerson.bloodType = personDetail.blood_type
+                newPerson.today = personDetail.today
+                newPerson.prefecture = addPrefecture(prefecture: personDetail.prefecture ?? Prefecture())
+                
+                try context.save()
+                print("Person saved successfully")
+            } else {
+                // IDに一致するPersonEntityが既に存在する場合は、既存のエンティティを更新するか、
+                // 何もしないで終了することを選択できます。
+                print("Person already exists. No new entity added.")
+            }
+        } catch {
+            print("Failed to fetch or save person: \(error)")
+        }
     }
     
     func deletePerson(person: Person) {
@@ -136,7 +147,7 @@ class PersonViewModel: ObservableObject {
     }
     
     func entityToModel(entity: PersonEntity) -> Person {
-        return Person(id: entity.id ?? UUID(), name: entity.name ?? "", birthday: YearMonthDay(date: entity.birthday ?? Date()), bloodType: entity.bloodType ?? "", today: entity.today ?? Date(), prefecture: prefectureEntityToPrefecture(entity: entity.prefecture ?? PrefectureEntity()),isFavorite: entity.isFavorite
+        return Person(id: entity.id ?? UUID(), name: entity.name ?? "", birthday: entity.birthday ?? Date(), bloodType: entity.bloodType ?? "", today: entity.today ?? Date(), prefecture: prefectureEntityToPrefecture(entity: entity.prefecture ?? PrefectureEntity()),isFavorite: entity.isFavorite
         )
     }
     
