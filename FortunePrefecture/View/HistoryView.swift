@@ -9,9 +9,12 @@ import SwiftUI
 import CoreData
 
 struct HistoryView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     @StateObject var viewModel = PersonViewModel()
-    @StateObject var personVM = PersonViewModel()
+    @State private var sortOption: SortOption = .fromNew
+    
+    enum SortOption {
+        case fromNew, fromOld, byPrefecture
+    }
     
     
     var body: some View {
@@ -33,13 +36,30 @@ struct HistoryView: View {
                             }
                             .frame(width: 60, height: 40)
                             .cornerRadius(10)
-                            // Text(person.id.uuidString ?? "")
+                
                         }
                     }
                 }
                 .onDelete(perform: deletePerson)
             }
             .navigationTitle("占い履歴")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Button(action: { viewModel.sortPeople(sortOption: .fromNew) }) {
+                            Label("新しい順", systemImage: viewModel.sortOption == .fromNew ? "checkmark" : "")
+                        }
+                        Button(action: { viewModel.sortPeople(sortOption: .fromOld) }) {
+                            Label("古い順", systemImage: viewModel.sortOption == .fromOld ? "checkmark" : "")
+                        }
+                        Button(action: { viewModel.sortPeople(sortOption: .byPrefecture) }) {
+                            Label("都道府県順", systemImage: viewModel.sortOption == .byPrefecture ? "checkmark" : "")
+                        }
+                    } label: {
+                        Label("並び替え", systemImage: "arrow.up.arrow.down")
+                    }
+                }
+            }
             .onAppear {
                 viewModel.fetchPeople()
             }
@@ -47,8 +67,7 @@ struct HistoryView: View {
     }
     private func deletePerson(at offsets: IndexSet) {
         for index in offsets {
-            guard let personToDelete = viewModel.people?[index] else { 
-                print("エラ＾")
+            guard let personToDelete = viewModel.people?[index] else {
                 return }
             viewModel.deletePerson(person: personToDelete)
         }
@@ -56,5 +75,6 @@ struct HistoryView: View {
         viewModel.fetchPeople()
     }
 }
+
 
 

@@ -11,6 +11,11 @@ import CoreData
 class PersonViewModel: ObservableObject {
     @Published var person: Person?
     @Published var people: [Person]?
+    @Published var sortOption: SortOption = .fromNew
+    
+    enum SortOption {
+        case fromNew, fromOld, byPrefecture
+    }
     
     
     private let context: NSManagedObjectContext = PersistenceController.shared.context
@@ -22,6 +27,19 @@ class PersonViewModel: ObservableObject {
     
     init(person:Person){
         self.person = person
+    }
+    
+    func sortPeople(sortOption: SortOption){
+        self.sortOption = sortOption
+        switch sortOption{
+        case .byPrefecture:
+            people = people?.sortedByPrefectureOrder()
+        case .fromNew:
+            people = people?.sorted(by: { $0.today > $1.today }) ?? []
+        case .fromOld:
+            people = people?.sorted(by: { $0.today < $1.today }) ?? []
+        }
+        
     }
     
     func addPerson() {

@@ -41,7 +41,7 @@ struct FortuneDetailView: View {
                         }
                         Text("血液型:")
                             .bold()
-                        //Text(personVM.person?.birthday.toString() ?? "不明")
+                        Text(personVM.person?.todayString ?? "不明")
                         Spacer()
                         
                     }

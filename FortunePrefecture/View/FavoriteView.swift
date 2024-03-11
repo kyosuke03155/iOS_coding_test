@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct FavoriteView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    
     @StateObject var viewModel = PersonViewModel()
     
     var body: some View {
