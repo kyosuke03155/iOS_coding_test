@@ -21,7 +21,7 @@
 
 - お気に入りの閲覧、並び替え  
 <img height="500" src="https://github.com/kyosuke03155/iOS_coding_test/assets/88703973/4a82845e-b797-49d5-86da-7ce962a2216d">
-<img height="500" src="https://github.com/kyosuke03155/iOS_coding_test/assets/88703973/2800088e-ff2a-4927-8904-b3cadd4e6e5f">
+<img height="500" src="https://github.com/kyosuke03155/iOS_coding_test/assets/88703973/2800088e-ff2a-4927-8904-b3cadd4e6e5f">  
 ## 使用技術
 - SwiftUI
 - CoreData
