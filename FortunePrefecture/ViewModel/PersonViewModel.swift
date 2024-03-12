@@ -123,7 +123,7 @@ class PersonViewModel: ObservableObject {
             self.people = result.map { entity in
                 entityToModel(entity: entity)
             }
-            self.people = people!.sorted { $0.today > $1.today }
+            sortPeople(sortOption: sortOption)
         } catch {
             print("Failed to fetch prefectures: \(error)")
             self.people = nil
@@ -236,6 +236,7 @@ class PersonViewModel: ObservableObject {
             self.people = people.map { entity in
                 entityToModel(entity: entity)
             }
+            sortPeople(sortOption: sortOption)
         } catch {
             self.people = nil
         }

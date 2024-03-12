@@ -11,12 +11,24 @@ import CoreData
 final class PrefectureViewModel: ObservableObject {
     @Published var prefectures: [Prefecture]?
     @Published var prefecture: Prefecture?
+    @Published var sortOption: SortOption = .byPrefecture
+    
     
     private let context: NSManagedObjectContext = PersistenceController.shared.context
+    
+    enum SortOption {
+        case byPrefecture, byPrefectureDesc, peopleCount
+    }
     
     init() {
         
     }
+    
+    func sortPrefecture(sortOption: SortOption){
+        self.sortOption = sortOption
+        self.fetchAllPrefectures()
+    }
+    
     init(prefecture:Prefecture){
         self.prefecture = prefecture
     }
@@ -51,14 +63,30 @@ final class PrefectureViewModel: ObservableObject {
     // すべての都道府県を取得するメソッド
     func fetchAllPrefectures(){
         let request: NSFetchRequest<PrefectureEntity> = PrefectureEntity.fetchRequest()
-        print("fetchPrefectureByName")
+        //let sortDescriptor = NSSortDescriptor(key: "people.count", ascending: false)
+        //request.sortDescriptors = [sortDescriptor]
+        
         do {
-            let result = try context.fetch(request)
-            self.prefectures = result.map { entity in
+            var prefectures = try context.fetch(request)
+            if (sortOption == .peopleCount){
+                prefectures = prefectures.sorted{
+                    let count1 = $0.people?.count ?? 0
+                    let count2 = $1.people?.count ?? 0
+                    if count1 == count2 {
+                        return PrefectureOrder.getOrder(of: $0.name ?? "")  < PrefectureOrder.getOrder(of: $1.name ?? "")
+                    }
+                    return count1 > count2
+                }
+            }
+            self.prefectures = prefectures.map { entity in
                 entityToModel(entity: entity)
             }
+            if(sortOption == .byPrefecture){
+                self.prefectures = self.prefectures?.sortedByPrefectureOrder()
+            }else if(sortOption == .byPrefectureDesc){
+                self.prefectures = self.prefectures?.sortedByPrefectureOrder().reversed()
+            }
         } catch {
-            print("Failed to fetch prefectures: \(error)")
             self.prefectures = nil
         }
     }

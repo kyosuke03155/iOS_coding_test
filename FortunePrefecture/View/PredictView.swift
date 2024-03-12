@@ -2,10 +2,10 @@ import SwiftUI
 //import CoreData
 
 struct PredictView: View {
-    //@Environment(\.managedObjectContext) private var viewContext
+    
     @StateObject private var viewModel = FortuneViewModel()
     @State private var isShowAlert = false
-    @FocusState var focus:Bool
+    @FocusState var keyboardFocus:Bool
     @State private var showDetailView = false
     
     var body: some View {
@@ -14,16 +14,18 @@ struct PredictView: View {
                 VStack(spacing: 10) { // 要素間の間隔を統一
                     
                     Spacer()
+                    Divider()
                     TextField("名前を入力してください", text: $viewModel.name)
                         .submitLabel(SubmitLabel.done)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal)
-                        .focused(self.$focus)
-                    
+                        .focused(self.$keyboardFocus)
+                    Divider()
                     DatePicker("生年月日を選択してください", selection: $viewModel.birthday, in: viewModel.startDate...Date(), displayedComponents: .date)
                         .padding(.horizontal)
-                    
-                    
+                    Divider()
+                    Text("血液型を選択してください")
+                        .padding(.horizontal)
                     Picker("血液型を選択してください", selection: $viewModel.bloodType) {
                         ForEach(BloodTypes.allCases, id: \.self) { type in
                             Text(type.rawValue).tag(type.rawValue.lowercased())
@@ -33,30 +35,34 @@ struct PredictView: View {
                     .padding(.horizontal)
                     .onChange(of: viewModel.bloodType) {
                         
-                        focus = false
+                        keyboardFocus = false
                     }
+                    Divider()
                     
                     
-                    HStack{
-                        Button("リセット") {
-                            print(viewModel.name)
-                            viewModel.reset()
-                            
-                        }
-                        .padding()
-                        .buttonStyle(.borderedProminent) // ボタンのスタイルを強調
-                        Button("占いを実行") {
-                            focus = false
-                            if (viewModel.name == ""){
-                                isShowAlert.toggle()
-                            }else{
-                                viewModel.fetchFortune()
-                            }
-                            
-                        }
-                        .padding()
-                        .buttonStyle(.borderedProminent) // ボタンのスタイルを強調
+                    Button("リセット") {
+                        print(viewModel.name)
+                        viewModel.reset()
+                        
                     }
+                    .padding()
+                    .buttonStyle(.borderedProminent) // ボタンのスタイルを強調
+                    
+                    Button("占いを実行") {
+                        keyboardFocus = false
+                        if (viewModel.name == ""){
+                            isShowAlert.toggle()
+                        }else{
+                            viewModel.fetchFortune()
+                        }
+                        
+                    }
+                    .frame(width: UIScreen.main.bounds.width * 0.9)
+                    .font(.headline)
+                    .padding()
+                    .buttonStyle(.borderedProminent) // ボタンのスタイルを強調
+                    
+                    
                     
                     if(viewModel.result != "占い結果がここに表示されます"){
                         
@@ -69,7 +75,7 @@ struct PredictView: View {
                             } placeholder: {
                                 ProgressView()
                             }
-                            .frame(width: 200, height: 200)
+                            .frame(width: 150, height: 150)
                             .padding()
                         }
                         

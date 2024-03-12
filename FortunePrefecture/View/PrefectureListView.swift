@@ -9,8 +9,12 @@ import SwiftUI
 import CoreData
 
 struct PrefectureListView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     @StateObject var viewModel = PrefectureViewModel()
+    @State private var sortOption: SortOption = .byPrefecture
+    
+    enum SortOption {
+        case byPrefecture, byPrefectureDesc, peopleCount
+    }
     
     var body: some View {
         NavigationView {
@@ -45,6 +49,23 @@ struct PrefectureListView: View {
                 }
             }
             .navigationTitle("都道府県コレクション")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Button(action: { viewModel.sortPrefecture(sortOption: .byPrefecture) }) {
+                            Label("昇順", systemImage: viewModel.sortOption == .byPrefecture ? "checkmark" : "")
+                        }
+                        Button(action: { viewModel.sortPrefecture(sortOption: .byPrefectureDesc)}) {
+                            Label("降順", systemImage: viewModel.sortOption == .byPrefectureDesc ? "checkmark" : "")
+                        }
+                        Button(action: { viewModel.sortPrefecture(sortOption: .peopleCount)}) {
+                            Label("占い数順", systemImage: viewModel.sortOption == .peopleCount ? "checkmark" : "")
+                        }
+                    } label: {
+                        Label("並び替え", systemImage: "arrow.up.arrow.down")
+                    }
+                }
+            }
             .onAppear {
                 viewModel.fetchAllPrefectures()
             }

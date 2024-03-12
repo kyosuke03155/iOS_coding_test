@@ -9,8 +9,13 @@ import SwiftUI
 import CoreData
 
 struct FavoriteView: View {
-    
     @StateObject var viewModel = PersonViewModel()
+    @State private var sortOption: SortOption = .fromNew
+    
+    enum SortOption {
+        case fromNew, fromOld, byPrefecture
+    }
+    
     
     var body: some View {
         NavigationView {
@@ -18,17 +23,54 @@ struct FavoriteView: View {
                 ForEach(viewModel.people ?? []) {person in
                     NavigationLink(destination: FortuneDetailView(personVM: PersonViewModel(person:person))) {
                         HStack {
-                            Text(person.prefecture?.name ?? "不明な都道府県")
-                            Text(person.id.uuidString )
+                            VStack{
+                                Text(person.todayString)
+                                Text(person.name)
+                            }
+                            Spacer()
+                            AsyncImage(url: URL(string: person.prefecture?.logo_url ?? "")) { image in
+                                image.resizable().aspectRatio(contentMode: .fit)
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 60, height: 40)
+                            .cornerRadius(10)
+                
                         }
                     }
                 }
-                
+                .onDelete(perform: deletePerson)
             }
-            .navigationTitle("お気に入り")
+            .navigationTitle("お気に入りの占い履歴")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Button(action: { viewModel.sortPeople(sortOption: .fromNew) }) {
+                            Label("新しい順", systemImage: viewModel.sortOption == .fromNew ? "checkmark" : "")
+                        }
+                        Button(action: { viewModel.sortPeople(sortOption: .fromOld) }) {
+                            Label("古い順", systemImage: viewModel.sortOption == .fromOld ? "checkmark" : "")
+                        }
+                        Button(action: { viewModel.sortPeople(sortOption: .byPrefecture) }) {
+                            Label("都道府県順", systemImage: viewModel.sortOption == .byPrefecture ? "checkmark" : "")
+                        }
+                    } label: {
+                        Label("並び替え", systemImage: "arrow.up.arrow.down")
+                    }
+                }
+            }
             .onAppear {
                 viewModel.fetchFavorite()
             }
         }
+    }
+    private func deletePerson(at offsets: IndexSet) {
+        for index in offsets {
+            guard let personToDelete = viewModel.people?[index] else {
+                return }
+            viewModel.deletePerson(person: personToDelete)
+        }
+        //データの再フェッチ
+        viewModel.fetchFavorite()
     }
 }

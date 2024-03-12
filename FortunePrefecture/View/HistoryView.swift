@@ -24,10 +24,9 @@ struct HistoryView: View {
                     NavigationLink(destination: FortuneDetailView(personVM: PersonViewModel(person:person))) {
                         HStack {
                             VStack{
-                                //Text(String(person.today) ?? "")
+                                Text(person.todayString)
                                 Text(person.name)
                             }
-                            Text(person.prefecture?.name ?? "不明な都道府県")
                             Spacer()
                             AsyncImage(url: URL(string: person.prefecture?.logo_url ?? "")) { image in
                                 image.resizable().aspectRatio(contentMode: .fit)
@@ -36,7 +35,7 @@ struct HistoryView: View {
                             }
                             .frame(width: 60, height: 40)
                             .cornerRadius(10)
-                
+                            
                         }
                     }
                 }

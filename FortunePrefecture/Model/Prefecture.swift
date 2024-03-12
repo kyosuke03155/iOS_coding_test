@@ -91,3 +91,13 @@ struct PrefectureOrder {
         return order[prefectureName] ?? 48
     }
 }
+
+extension Array where Element == Prefecture {
+    func sortedByPrefectureOrder() -> [Prefecture] {
+        self.sorted { (prefecture1, prefecture2) -> Bool in
+            let order1 = PrefectureOrder.getOrder(of: prefecture1.name)
+            let order2 = PrefectureOrder.getOrder(of: prefecture2.name)
+            return order1 < order2
+        }
+    }
+}

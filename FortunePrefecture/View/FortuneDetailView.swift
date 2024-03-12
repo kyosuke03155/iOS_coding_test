@@ -91,7 +91,7 @@ struct FortuneDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("\(personVM.person?.name ?? "")さんの占い結果詳細")
+        .navigationTitle("占い結果詳細")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack{
