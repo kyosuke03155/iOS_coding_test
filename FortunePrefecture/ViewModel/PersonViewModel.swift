@@ -53,7 +53,6 @@ class PersonViewModel: ObservableObject {
         do {
             let results = try context.fetch(fetchRequest)
             if results.isEmpty {
-                // IDに一致するPersonEntityが存在しない場合、新しいエンティティを追加
                 let newPerson = PersonEntity(context: context)
                 newPerson.id = personDetail.id
                 newPerson.name = personDetail.name
@@ -63,19 +62,17 @@ class PersonViewModel: ObservableObject {
                 newPerson.prefecture = addPrefecture(prefecture: personDetail.prefecture ?? Prefecture())
                 
                 try context.save()
-                print("Person saved successfully")
+            
             } else {
-                // IDに一致するPersonEntityが既に存在する場合は、既存のエンティティを更新するか、
-                // 何もしないで終了することを選択できます。
-                print("Person already exists. No new entity added.")
+                return
             }
         } catch {
-            print("Failed to fetch or save person: \(error)")
+            return
         }
     }
     
     func deletePerson(person: Person) {
-        print(#function)
+        
         let personId = person.id
         let request: NSFetchRequest<PersonEntity> = PersonEntity.fetchRequest()
         request.predicate = NSPredicate(format: "id == %@", personId.uuidString)
@@ -102,15 +99,12 @@ class PersonViewModel: ObservableObject {
         do {
             let results = try context.fetch(request)
             if let personEntity = results.first {
-                // データが見つかった場合
                 let personModel = entityToModel(entity: personEntity)
                 completion(.success(personModel))
             } else {
-                // データが存在しない場合
                 completion(.failure(NSError(domain: "PersonNotFound", code: 404, userInfo: nil)))
             }
         } catch {
-            // 他のエラーが発生した場合
             completion(.failure(error))
         }
     }
@@ -125,7 +119,6 @@ class PersonViewModel: ObservableObject {
             }
             sortPeople(sortOption: sortOption)
         } catch {
-            print("Failed to fetch prefectures: \(error)")
             self.people = nil
         }
     }
@@ -142,7 +135,6 @@ class PersonViewModel: ObservableObject {
             }
             
         } catch {
-            print("Failed to fetch prefectures: \(error)")
             self.people = nil
         }
     }
@@ -178,14 +170,11 @@ class PersonViewModel: ObservableObject {
             
             do {
                 try context.save()
-                print("Prefecture saved successfully")
                 return newPrefecture
             } catch {
-                print("Failed to save prefecture: \(error)")
                 return nil
             }
         }else{
-            print("すでに存在する都道府県です")
             return prefecrureEntity
         }
     }
@@ -198,14 +187,13 @@ class PersonViewModel: ObservableObject {
         do {
             return try context.fetch(request).first
         } catch {
-            print("Failed to fetch prefectures by name: \(error)")
             return nil
         }
     }
 
     func toggleFavorite() -> Bool? {
         guard let personId = self.person?.id else {
-            return nil // personがnilの場合、処理に失敗したことを示すためにnilを返す
+            return nil
         }
         let request: NSFetchRequest<PersonEntity> = PersonEntity.fetchRequest()
         request.predicate = NSPredicate(format: "id == %@", personId.uuidString)
@@ -214,17 +202,16 @@ class PersonViewModel: ObservableObject {
         do {
             let results = try context.fetch(request)
             if let personEntity = results.first {
-                personEntity.isFavorite.toggle() // お気に入りの状態をトグル
-                try context.save() // 変更を保存
+                personEntity.isFavorite.toggle()
+                try context.save()
                 self.person!.is_favorite = personEntity.isFavorite
-                print(self.person!.is_favorite)
-                return personEntity.isFavorite // 新しいお気に入りの状態を返す
+                return personEntity.isFavorite
             }
         } catch {
-            return nil // エラーが発生した場合、処理に失敗したことを示すためにnilを返す
+            return nil
         }
 
-        return nil // 該当するPersonEntityが見つからなかった場合、処理に失敗したことを示すためにnilを返す
+        return nil
     }
     
     func fetchFavorite() {

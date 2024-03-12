@@ -1,5 +1,4 @@
 import SwiftUI
-//import CoreData
 
 struct PredictView: View {
     
@@ -9,9 +8,9 @@ struct PredictView: View {
     @State private var showDetailView = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
-                VStack(spacing: 10) { // 要素間の間隔を統一
+                VStack(spacing: 10) {
                     
                     Spacer()
                     Divider()
@@ -39,32 +38,32 @@ struct PredictView: View {
                     }
                     Divider()
                     
-                    
-                    Button("リセット") {
-                        print(viewModel.name)
-                        viewModel.reset()
-                        
-                    }
-                    .padding()
-                    .buttonStyle(.borderedProminent) // ボタンのスタイルを強調
-                    
-                    Button("占いを実行") {
-                        keyboardFocus = false
-                        if (viewModel.name == ""){
-                            isShowAlert.toggle()
-                        }else{
-                            viewModel.fetchFortune()
+                    HStack{
+                        Button("リセット") {
+                            viewModel.reset()
+                            
                         }
+                        .padding()
+                        .buttonStyle(.borderedProminent)
                         
+                        Button("占いを実行") {
+                            keyboardFocus = false
+                            if (viewModel.name == ""){
+                                isShowAlert.toggle()
+                            }else{
+                                viewModel.fetchFortune()
+                            }
+                            
+                        }
+                        .font(.headline)
+                        .padding()
+                        .buttonStyle(.borderedProminent)
                     }
-                    .frame(width: UIScreen.main.bounds.width * 0.9)
-                    .font(.headline)
-                    .padding()
-                    .buttonStyle(.borderedProminent) // ボタンのスタイルを強調
                     
                     
                     
-                    if(viewModel.result != "占い結果がここに表示されます"){
+                    
+                    if(viewModel.result != ""){
                         
                         Text(viewModel.result)
                             .padding()
@@ -78,25 +77,20 @@ struct PredictView: View {
                             .frame(width: 150, height: 150)
                             .padding()
                         }
-                        
-                        NavigationLink(destination: FortuneDetailView(personVM: viewModel.personVM), isActive: $showDetailView) {
-                            EmptyView()
-                        }
-                        
                         Button(action: {
-                            // ここで必要な処理を実行
-                            //performSomeAction()
-                            print(#function)
+                        
                             viewModel.personVM.addPerson()
-                            // 処理が完了したら画面遷移をトリガー
                             showDetailView = true
                         }) {
                             Text("詳細を見る")
                                 .padding()
-                                .background(Color.blue) // ボタンの背景色
-                                .foregroundColor(.white) // ボタンのテキスト色
-                                .cornerRadius(10) // ボタンの角の丸み
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
                         }
+                        .navigationDestination(isPresented: $showDetailView) {
+                            FortuneDetailView(personVM: viewModel.personVM)
+                                    }
                     }
                     
                 }
@@ -108,7 +102,7 @@ struct PredictView: View {
         .alert("名前を入力してください", isPresented: $isShowAlert) {
             
         } message: {
-            // アラートのメッセージ...
+            
             Text("占いができません")
         }
     }

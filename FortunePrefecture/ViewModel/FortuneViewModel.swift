@@ -16,13 +16,11 @@ class FortuneViewModel: ObservableObject {
     @Published var name: String = ""
     @Published var birthday: Date = Date()
     @Published var bloodType: String = "a"
-    @Published var result: String = "占い結果がここに表示されます"
-    @Published var logoUrl: String = "" // 初期状態は空
+    @Published var result: String = ""
+    @Published var logoUrl: String = ""
     private var lastFetchedName: String?
     private var lastFetchedBirthday: Date?
     private var lastFetchedBloodType: String?
-    
-    //@Published var fortuneResponse: FortuneResponse
     
     private let context: NSManagedObjectContext = PersistenceController.shared.context
     let bloodTypes = ["A", "B", "O", "AB"]
@@ -30,25 +28,22 @@ class FortuneViewModel: ObservableObject {
     init() {
         self.personVM = PersonViewModel()
         self.prefectureVM = PrefectureViewModel()
-        //self.fortuneResponse = FortuneResponse.preview
     }
     
     func reset(){
         name = ""
         birthday = Date()
         bloodType = "a"
-        result = "占い結果がここに表示されます"
+        result = ""
         logoUrl = ""
         self.personVM = PersonViewModel()
         self.prefectureVM = PrefectureViewModel()
     }
     
     
-    //func fetchFortune(birthday: Date, bloodType: String) {
     func fetchFortune() {
         
         guard name != lastFetchedName || birthday != lastFetchedBirthday || bloodType != lastFetchedBloodType else {
-            print("変更がありません")
             return
         }
         
@@ -59,7 +54,6 @@ class FortuneViewModel: ObservableObject {
         self.personVM.person = Person(name: name, birthday: birthday, bloodType: bloodType, today: today)
         
         
-        print(name, birthday, bloodType,today)
         FortuneAPI.shared.fetchFortune(forName: self.name, birthday: birthdayYMD, bloodType: bloodType, today: todayYMD) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -67,7 +61,7 @@ class FortuneViewModel: ObservableObject {
                     
                     let _prefecture = Prefecture(name: prefecture.name, capital: prefecture.capital, citizen_day: prefecture.citizen_day, has_coast_line: prefecture.has_coast_line, logo_url: prefecture.logo_url, brief: prefecture.brief)
                     self?.prefectureVM.prefecture = _prefecture
-                    self?.prefectureVM.addPrefecture()
+                    _ = self?.prefectureVM.addPrefecture()
                     self?.personVM.person?.prefecture = _prefecture
                     self?.personVM.addPerson()
                     self?.result = "都道府県名: \(prefecture.name)"
@@ -97,11 +91,11 @@ class FortuneAPI {
             completion(.failure(NSError(domain: "FortuneAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
             return
         }
-        print("mm")
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("v1", forHTTPHeaderField: "API-Version")  // APIバージョンの指定
+        request.addValue("v1", forHTTPHeaderField: "API-Version")
         
         let requestBody = FortuneRequest(name: name, birthday: birthday, blood_type: bloodType, today: today)
         
@@ -113,9 +107,6 @@ class FortuneAPI {
             completion(.failure(error))
             return
         }
-        print("req")
-        print(requestBody)
-        print(name, birthday, bloodType,today)
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(error))

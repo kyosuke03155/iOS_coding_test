@@ -24,26 +24,26 @@ struct FortuneDetailView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                         .padding(.top)
-                    
-                    VStack(alignment: .leading, spacing: 5) { // 要素間隔を5に設定
-                        HStack {
-                            Text("名前:")
+                    HStack {
+                        Spacer()
+                        VStack{
+                            Text("占った日")
                                 .bold()
-                            Spacer()
-                            Text(personVM.person?.name ?? "不明")
+                            Text("名前")
+                                .bold()
+                            Text("誕生日")
+                                .bold()
+                            Text("血液型")
+                                .bold()
                         }
-                        
-                        HStack {
-                            Text("血液型:")
-                                .bold()
-                            Spacer()
+                        Spacer()
+                        VStack{
+                            Text(personVM.person?.todayString ?? "不明")
+                            Text(personVM.person?.name ?? "不明")
+                            Text(personVM.person?.birthdayString ?? "不明")
                             Text(personVM.person?.blood_type.uppercased() ?? "不明")
                         }
-                        Text("血液型:")
-                            .bold()
-                        Text(personVM.person?.todayString ?? "不明")
                         Spacer()
-                        
                     }
                     .padding([.top, .bottom], 5) // 上下のPaddingを5に設定して、要素間の間隔を狭くする
                     .frame(maxWidth: .infinity, alignment: .leading) // 幅を最大限にして、左揃え
@@ -51,12 +51,10 @@ struct FortuneDetailView: View {
                     .cornerRadius(8) // 角丸設定
                     .padding(.horizontal) // 水平方向のPadding
                     
-                    
                 }
                 
                 Divider()
-                //Text(personVM.person?.birthday.toString() ?? "不明")
-                // レスポンス情報の表示
+            
                 Group {
                     
                     Text("都道府県: \(personVM.person?.prefecture?.name ?? "不明")")
@@ -67,12 +65,14 @@ struct FortuneDetailView: View {
                         .font(.headline)
                     
                     
-                    
                     HStack {
-                        Image(systemName: (personVM.person?.prefecture?.has_coast_line==true) ? "waveform.path.ecg" : "mountain")
+                        Image(systemName: (personVM.person?.prefecture?.has_coast_line==true) ? "water.waves" : "mountain.2")
                             .foregroundColor((personVM.person?.prefecture?.has_coast_line==true) ? .blue : .green)
                         Text((personVM.person?.prefecture?.has_coast_line==true) ? "海岸線あり" : "海岸線なし")
+                            .font(.headline)
                     }
+                    Text("県民の日: \(personVM.person?.prefecture?.citizen_day?.toString() ?? "無し" )")
+                        .font(.headline)
                     
                     AsyncImage(url: URL(string: personVM.person?.prefecture?.logo_url ?? "")) { image in
                         image.resizable().aspectRatio(contentMode: .fit)
@@ -83,8 +83,7 @@ struct FortuneDetailView: View {
                     .cornerRadius(10)
                     Text("説明: \(personVM.person?.prefecture?.brief ?? "不明")")
                         .font(.headline)
-                    Text("県民の日: \(personVM.person?.prefecture?.citizen_day?.toString() ?? "無し" )")
-                        .font(.headline)
+                    
                     
                 }
                 
@@ -119,14 +118,11 @@ struct FortuneDetailView: View {
         }
         .onAppear{
             personVM.fetchPerson{ result in
-                if case .failure(let error) = result {
-                    // エラー時の処理。エラーに応じた処理をここに書く。
-                    print("Error fetching person: \(error.localizedDescription)")
+                if case .failure(_) = result {
                     self.presentationMode.wrappedValue.dismiss()
                 }
             }
             isFavorite = personVM.person?.is_favorite ?? false
-            print(isFavorite)
         }
     }
 }

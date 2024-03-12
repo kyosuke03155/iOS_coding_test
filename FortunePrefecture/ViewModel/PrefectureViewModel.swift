@@ -106,28 +106,24 @@ final class PrefectureViewModel: ObservableObject {
             
             do {
                 try context.save()
-                print("Prefecture saved successfully")
                 return newPrefecture
             } catch {
-                print("Failed to save prefecture: \(error)")
                 return nil
             }
         }else{
-            print("すでに存在する都道府県です")
             return prefecrureEntity
         }
     }
     
-    // 特定の条件で都道府県を検索するメソッド（例: 名前による検索）
+    
     func fetchPrefectureByName(_ name: String) -> PrefectureEntity? {
         let request: NSFetchRequest<PrefectureEntity> = PrefectureEntity.fetchRequest()
         request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", name)
-        request.fetchLimit = 1 // 結果を1つに限定
+        request.fetchLimit = 1
         
         do {
             return try context.fetch(request).first
         } catch {
-            print("Failed to fetch prefectures by name: \(error)")
             return nil
         }
     }

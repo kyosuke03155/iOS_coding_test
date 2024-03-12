@@ -22,7 +22,7 @@ struct PrefectureListView: View {
                 ForEach(viewModel.prefectures ?? []) {prefecture in
                     NavigationLink(destination: PrefectureDetailView(prefectureVM: PrefectureViewModel(prefecture:prefecture))) {
                         HStack {
-                            Text(prefecture.name ?? "不明な都道府県")
+                            Text(prefecture.name)
                             Spacer()
                             
                             AsyncImage(url: URL(string: prefecture.logo_url)) { phase in
